@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Underground Protocol: Sector Zero — Скачать для Android</title>
+    <style>
+        :root {
+            --bg-dark: #0a0b0e;
+            --bg-panel: #13161d;
+            --accent: #e53935;
+            --accent-hover: #ff5252;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border-color: #262b38;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(229, 57, 53, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 80% 80%, rgba(56, 189, 248, 0.08) 0%, transparent 45%),
+                linear-gradient(180deg, #0a0b0e 0%, #111319 100%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 16px;
+            line-height: 1.6;
+        }
+
+        /* Декоративная сетка на фоне */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+            width: 100%;
+            background: rgba(19, 22, 29, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(229, 57, 53, 0.15);
+            border: 1px solid rgba(229, 57, 53, 0.4);
+            color: #ff6b6b;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 999px;
+            margin-bottom: 20px;
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #ff5252;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #ff5252;
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            background: linear-gradient(90deg, #ffffff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .description {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 32px;
+            text-align: left;
+            background: rgba(10, 11, 14, 0.5);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .description p {
+            margin-bottom: 12px;
+        }
+
+        .description p:last-child {
+            margin-bottom: 0;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 32px;
+        }
+
+        .feature-tag {
+            background: #1b202b;
+            border: 1px solid #2d3545;
+            color: #cbd5e1;
+            font-size: 0.85rem;
+            padding: 6px 12px;
+            border-radius: 8px;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--accent) 0%, #b71c1c 100%);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.15rem;
+            font-weight: 700;
+            padding: 16px 36px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(229, 57, 53, 0.5);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+            margin-bottom: 10px;
+            width: 100%;
+            max-width: 380px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px -5px rgba(229, 57, 53, 0.7);
+            background: linear-gradient(135deg, var(--accent-hover) 0%, #c62828 100%);
+        }
+
+        .download-btn:active {
+            transform: translateY(0);
+        }
+
+        .file-info {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 36px;
+            font-family: monospace;
+        }
+
+        .tutorial {
+            text-align: left;
+            background: rgba(15, 18, 25, 0.9);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .tutorial h2 {
+            font-size: 1.2rem;
+            margin-bottom: 14px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tutorial ol {
+            padding-left: 20px;
+            color: #cbd5e1;
+        }
+
+        .tutorial li {
+            margin-bottom: 10px;
+        }
+
+        .tutorial li:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #ff8a80;
+            font-weight: 600;
+            background: rgba(229, 57, 53, 0.12);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        footer {
+            margin-top: 28px;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        @media (max-width: 520px) {
+            .container {
+                padding: 28px 20px;
+            }
+            h1 {
+                font-size: 1.85rem;
+            }
+            .download-btn {
+                font-size: 1.05rem;
+                padding: 14px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="badge">
+            <span class="badge-dot"></span>
+            Альфа-тестирование (Alpha Build)
+        </div>
+
+        <h1>UNDERGROUND PROTOCOL</h1>
+        <div class="subtitle">Sector Zero</div>
+
+        <div class="description">
+            <p>
+                <strong>Underground Protocol: Sector Zero</strong> — хардкорная мобильная 3D-песочница и шутер от первого лица с эффектом нагрудной бодикам-камеры, реалистичной физикой и полной свободой действий.
+            </p>
+            <p>
+                Исследуй закрытые индустриальные зоны и пустынные аванпосты, спавни NPC, технику и интерактивные объекты, тестируй внушительный арсенал оружия, грави-пушку и жесткую рэгдолл-физику в динамических погодных условиях.
+            </p>
+        </div>
+
+        <div class="features">
+            <span class="feature-tag">🎥 Bodycam-перспектива</span>
+            <span class="feature-tag">💥 Рэгдолл-физика</span>
+            <span class="feature-tag">🚗 Транспорт и спавн-меню</span>
+            <span class="feature-tag">🔫 Богатый арсенал</span>
+            <span class="feature-tag">🌧️ Динамическая погода</span>
+        </div>
+
+        <a href="undergroundProtocol_Godot.zip" download="undergroundProtocol_Godot.zip" class="download-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Скачать для Android
+        </a>
+        <span class="file-info">Архив проекта: undergroundProtocol_Godot.zip</span>
+
+        <div class="tutorial">
+            <h2>🛠️ Как установить и запустить (Туториал)</h2>
+            <ol>
+                <li>Установите движок <span class="highlight">Godot Engine</span> на Android (требуется версия <span class="highlight">не ниже 4.3</span>).</li>
+                <li>Нажмите кнопку <strong>«Скачать для Android»</strong> выше и сохраните архив <code>undergroundProtocol_Godot.zip</code>.</li>
+                <li>Откройте Godot, нажмите кнопку <strong>«Импорт» (Import)</strong> и выберите скачанный ZIP-файл.</li>
+                <li>Распакуйте и откройте проект в редакторе — готово, можно запускать и играть!</li>
+            </ol>
+        </div>
+
+        <footer>
+            Игра находится в стадии раннего альфа-тестирования. Возможны баги и регулярные обновления.
+        </footer>
+    </div>
+
+</body>
+</html>
